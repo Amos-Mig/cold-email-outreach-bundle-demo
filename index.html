@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<link rel='canonical' href='https://amos-mig.github.io/cold-email-outreach-bundle-demo/'>
+<title>Cold Email Outreach Bundle</title>
+<style>
+:root{--bg:#0b0d12;--pn:#14171f;--bd:#262b36;--tx:#e8eaf0;--mu:#9aa3b2;--ac:#10b981}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.w{max-width:960px;margin:0 auto;padding:0 18px}
+.bn{background:var(--ac);color:#04170f;font-size:13px;font-weight:700;text-align:center;padding:8px 14px}
+h1{font-size:clamp(24px,4.5vw,34px);letter-spacing:-.5px;margin-top:40px}
+.kick{color:var(--ac);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.su{color:var(--mu);margin:10px 0 0;max-width:680px}
+h2{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--mu);margin:40px 0 14px}
+h2 b{color:var(--ac)}
+.pn{background:var(--pn);border:1px solid var(--bd);border-radius:10px;padding:18px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+input,textarea{width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:6px;color:var(--tx);padding:10px;font:inherit;font-size:13.5px;margin:6px 0 12px}
+textarea{min-height:150px;resize:vertical}
+.bt{background:var(--ac);border:0;color:#04170f;font-weight:700;font:inherit;padding:10px 16px;border-radius:6px;cursor:pointer}
+.gh{background:none;border:1px solid var(--bd);color:var(--mu);font:inherit;font-size:13px;padding:9px 12px;border-radius:6px;cursor:pointer;margin:0 0 0 8px}
+.ck{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--bd);font-size:13px}
+.ck i{color:var(--mu);font-style:normal;font-size:12.5px}
+.ok{color:var(--ac);font-weight:700}.no{color:#ef4444;font-weight:700}
+.mtr{display:flex;align-items:center;gap:12px;margin:2px 0 6px}
+.br{flex:1;height:8px;background:var(--bg);border:1px solid var(--bd);border-radius:5px;overflow:hidden}
+.fl{height:100%;background:var(--ac);width:0;transition:width .5s}
+.vd{color:var(--mu);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.cd h3{font-size:15px;margin-bottom:6px}
+.cd p{color:var(--mu);font-size:13px}
+.cd.lk{border-style:dashed}
+.row{display:flex;justify-content:space-between;gap:10px;padding:11px 18px;border-top:1px solid var(--bd);color:var(--mu);font-size:13.5px;cursor:pointer}
+.row:hover{color:var(--tx);background:#181c26}
+pre{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:16px;overflow:auto;font-size:12.5px;color:var(--mu);line-height:1.6}
+pre b{color:var(--ac);font-weight:400}
+.sn{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+a{color:var(--mu);text-decoration:none}
+a:hover{color:var(--ac)}
+footer{margin-top:56px;border-top:1px solid var(--bd);padding:18px 0 30px;color:var(--mu);font-size:13px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+#t{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ac);color:#04170f;font-weight:700;font-size:13px;padding:9px 16px;border-radius:6px;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw}
+#t.show{opacity:1}
+@keyframes pu{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.65)}50%{box-shadow:0 0 0 12px rgba(16,185,129,0)}}
+.pulse{animation:pu .5s ease 2}
+@media(max-width:720px){.duo,.sn{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class='bn'>Live demo — only the email scorer + section 1 preview are unlocked. The full bundle does more ↓</div>
+<div class='w'>
+<header>
+<p class='kick'>Playbook · Templates · Field-tested</p>
+<h1>Cold Email Outreach Bundle</h1>
+<p class='su'>A field-tested markdown playbook that compresses weeks of cold-email trial and error into one document. Follow the checklists, adapt the templates, move straight to execution.</p>
+</header>
+
+<h2><b>01</b> — Pitch doctor (runs entirely in your browser)</h2>
+<div class='duo'>
+<div class='pn'>
+<p style='font-size:13px;color:var(--mu)'>Your draft</p>
+<label style='font-size:12px;color:var(--mu)'>Subject</label>
+<input id='s'>
+<label style='font-size:12px;color:var(--mu)'>Body</label>
+<textarea id='b'></textarea>
+<button class='bt' onclick='run()'>Score my email</button>
+<button class='gh' onclick='load(WEAK)'>Load a spammy draft</button>
+<button class='gh' onclick='load(STRONG)'>Load a good draft</button>
+</div>
+<div class='pn'>
+<div class='mtr'><span style='font-size:26px;font-weight:700'><span id='num'>0</span><span style='color:var(--mu);font-size:14px'>/100</span></span><div class='br'><div class='fl' id='fill'></div></div></div>
+<p class='vd' id='verdict'></p>
+<div id='cks' style='margin-top:10px'></div>
+<p style='font-size:12px;color:var(--mu);margin-top:12px'>These six checks are the anatomy checklist from section 2 — the bundle gives you the exact fix for every ✗.</p>
+</div>
+</div>
+
+<h2><b>02</b> — What's inside</h2>
+<div class='pn' style='padding:0'>
+<div style='padding:16px 18px'>
+<h3 style='font-size:15px'>1 · Target before you type <span style='color:var(--ac);font-size:11px;letter-spacing:1px'>&nbsp;UNLOCKED PREVIEW</span></h3>
+<ul style='color:var(--mu);font-size:13.5px;padding-left:18px;margin-top:8px'>
+<li>Define the ICP in one sentence: role + company size + trigger event.</li>
+<li>Pull 20 leads max for batch one — small batches teach faster.</li>
+<li>Score each lead 1–3 on fit; only tier-1 leads get the full personalization pass.</li>
+</ul>
+</div>
+<div class='row' onclick="lock('The 5-line email anatomy')"><span>2 · The 5-line email anatomy</span><span>🔒</span></div>
+<div class='row' onclick="lock('12 plug-and-play templates')"><span>3 · 12 plug-and-play templates</span><span>🔒</span></div>
+<div class='row' onclick="lock('The 3-touch follow-up cadence')"><span>4 · The 3-touch follow-up cadence</span><span>🔒</span></div>
+<div class='row' onclick="lock('Deliverability: SPF, DKIM & warmup')"><span>5 · Deliverability: SPF, DKIM &amp; warmup</span><span>🔒</span></div>
+<div class='row' onclick="lock('Objection scripts & weekly metrics')"><span>6 · Objection scripts + weekly metrics</span><span>🔒</span></div>
+</div>
+
+<h2><b>03</b> — Features</h2>
+<div class='cards'>
+<div class='cd pn'><h3>Step-by-step structure</h3><p>Six numbered sections — at any moment you know the single next action, from lead list to weekly metrics review.</p></div>
+<div class='cd pn'><h3>Checklists &amp; tables you fill in</h3><p>Copy-paste ready for Notion or any markdown viewer. Tick boxes as you execute; reuse for every campaign.</p></div>
+<div class='cd pn'><h3>Real-world, not theory</h3><p>Every script and cadence was sent in actual campaigns. What survived is what made it into the document.</p></div>
+<div class='cd pn lk'><h3>🔒 12 plug-and-play templates</h3><p>Hook / proof / ask variants per persona and industry — in the full bundle.</p></div>
+<div class='cd pn lk'><h3>🔒 Breakup email + objection library</h3><p>Word-for-word replies to “not interested”, “send pricing” and silence — in the full bundle.</p></div>
+</div>
+
+<h2><b>04</b> — Straight from the doc</h2>
+<div class='sn'>
+<pre>
+# Cold Email Outreach Bundle
+…
+<b>## 2 · The 5-line email anatomy</b>
+| Line   | Job            | Rule of thumb                 |
+|--------|----------------|-------------------------------|
+| Hook   | prove homework | 2 min of research, stated     |
+| Bridge | why them       | one clause, no adjectives     |
+| Proof  | earn trust     | a number, never a superlative |
+| Ask    | get a reply    | exactly one yes/no question   |
+
+… sections 3–6 continue in the full document …
+</pre>
+<div>
+<p style='color:var(--mu);font-size:13.5px'>Instant digital download · one markdown file · reads in Notion, Obsidian, VS Code or any viewer. Every checklist and template is included and ready to reuse.</p>
+<a href='https://amosmign.gumroad.com/l/cold-email-outreach-bundle'><button class='bt' id='cta' style='margin-top:14px;font-size:15px;padding:13px 22px'>Get the full bundle · 7</button></a>
+</div>
+</div>
+
+<footer>
+<span>Cold Email Outreach Bundle · kits.amosmignery.dev</span>
+<span><a href='https://github.com/Amos-Mig/cold-email-outreach-bundle-demo'>GitHub</a> · <a href='https://amosmign.gumroad.com/l/cold-email-outreach-bundle'>Get the bundle</a></span>
+<span class='disclaimer' style='display:block;color:#8b93a7;font-size:11px;margin-top:6px'>Demo runs on public data only &middot; no personal data collected &middot; not affiliated with the platforms shown</span></footer>
+</div>
+<div id='t'></div>
+<script>
+var $=function(id){return document.getElementById(id)};
+var WEAK={s:'AMAZING limited time offer — 100% FREE!!!',b:'Hi,\n\nI am the CEO of OutreachPro and we guarantee 10x replies with our risk-free platform. Our features are the best on the market. Click here and act now!\n\nBest,\nGreg'};
+var STRONG={s:'Quick question about Acme onboarding',b:'Hi Dana — saw your post about scaling Acme’s onboarding team.\n\nWe helped Fieldlab cut reply-handling time by 40% with a shared triage flow.\n\nWorth a 15-minute look on Tuesday?'};
+function run(){
+var s=$('s').value.trim(),b=$('b').value.trim();
+var sw=s?s.split(/\s+/).length:0,bw=b?b.split(/\s+/).length:0;
+var pers=/(saw your|noticed|came across|congrats|your (post|site|company|work|product|team|talk|launch|repo))/i.test(b);
+var you=(b.match(/\b(you|your)\b/gi)||[]).length,me=(b.match(/\b(i|my|we|our|us)\b/gi)||[]).length;
+var spam=(s+' '+b).match(/\b(free|guarantee\w*|act now|limited time|urgent|winner|cash)\b|100%|click here|risk-free/gi)||[];
+spam=spam.filter(function(v,i,a){return a.indexOf(v)===i});
+var ask=/\?/.test(b);
+var rows=[
+[sw>0&&sw<=8,'Subject: '+sw+' words',sw>0&&sw<=8?'Short enough to survive preview truncation':'Keep it under 8 words'],
+[bw>0&&bw<=120,'Body: '+bw+' words',bw>0&&bw<=120?'Short emails read like replies, not blasts':'Cut to ~120 words or fewer'],
+[pers,'Personalization hook',pers?'You reference something specific to them':'Open with something only true about THEM'],
+[you>0&&you>=me,'You-focus: '+you+' vs '+me,you>0&&you>=me?'Talking about them, not yourself':'Flip the I/we vs you/your ratio'],
+[!spam.length,'No spam triggers',spam.length?'Found: '+spam.join(', ').toLowerCase():'Nothing that trips filters'],
+[ask,'Ends with one clear ask',ask?'A yes/no question is easy to say yes to':'Close with a single question']
+];
+var ok=0;
+$('cks').innerHTML=rows.map(function(r){if(r[0])ok++;return '<div class=ck><span class='+(r[0]?'ok':'no')+'>'+(r[0]?'✓':'✗')+'</span><span><b>'+r[1]+'</b><br><i>'+r[2]+'</i></span></div>'}).join('');
+var p=Math.round(ok*100/rows.length);
+$('fill').style.width=p+'%';
+$('num').textContent=p;
+$('verdict').textContent=p>=85?'Send-ready — reads like a reply, not a pitch.':p>=50?'Close. Fix the ✗ rows and it ships.':'Reads like spam. Section 2 of the bundle fixes exactly this.';
+}
+function load(x){$('s').value=x.s;$('b').value=x.b;run()}
+function toast(m){var t=$('t');t.textContent=m;t.className='show';clearTimeout(t._x);t._x=setTimeout(function(){t.className=''},2400)}
+function lock(name){toast('🔒 “'+name+'” ships in the full bundle ↓');var c=$('cta');c.classList.remove('pulse');void c.offsetWidth;c.classList.add('pulse')}
+load(STRONG);
+</script>
+</body>
+</html>
